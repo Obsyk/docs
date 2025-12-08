@@ -94,6 +94,7 @@ nav:
       - Overview: operator/overview.md
       - Installation: operator/installation.md
       - Configuration: operator/configuration.md
+      - Security: operator/security.md
   - Reference:
       - Architecture: reference/architecture.md
       - Troubleshooting: reference/troubleshooting.md
