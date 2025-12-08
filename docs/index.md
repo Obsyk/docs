@@ -59,4 +59,5 @@ graph LR
 ## Need Help?
 
 - Check the [Troubleshooting Guide](reference/troubleshooting.md)
-- Open an issue on [GitHub](https://github.com/obsyk/docs/issues)
+- Ask questions on [GitHub Discussions](https://github.com/obsyk/docs/discussions)
+- Email [support@obsyk.ai](mailto:support@obsyk.ai) for private inquiries

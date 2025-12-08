@@ -102,4 +102,7 @@ If issues persist:
    - Cloud provider
    - Operator version
 
-3. Open an issue on [GitHub](https://github.com/obsyk/docs/issues) with the above information
+3. Get support:
+   - **Community Q&A**: [GitHub Discussions](https://github.com/obsyk/docs/discussions) - Best for general questions
+   - **Bug reports**: [GitHub Issues](https://github.com/obsyk/obsyk-operator/issues) - For confirmed bugs in the operator
+   - **Private inquiries**: [support@obsyk.ai](mailto:support@obsyk.ai) - For security issues or account questions

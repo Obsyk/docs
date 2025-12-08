@@ -475,5 +475,6 @@ The operator deployment passes CIS Kubernetes Benchmark controls:
 ## Security Contacts
 
 - **Security Advisories**: [github.com/obsyk/obsyk-operator/security](https://github.com/obsyk/obsyk-operator/security)
-- **Responsible Disclosure**: security@obsyk.ai
-- **Security Documentation**: [docs.obsyk.ai/operator/security](https://docs.obsyk.ai/operator/security)
+- **Responsible Disclosure**: [security@obsyk.ai](mailto:security@obsyk.ai)
+- **Community Support**: [GitHub Discussions](https://github.com/obsyk/docs/discussions)
+- **General Inquiries**: [support@obsyk.ai](mailto:support@obsyk.ai)
