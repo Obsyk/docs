@@ -17,17 +17,29 @@ Obsyk is a platform that helps you:
 
 <div class="grid cards" markdown>
 
-- :material-rocket-launch: **[Getting Started](getting-started/introduction.md)**
-  New to Obsyk? Start here.
+-   :material-rocket-launch: __[Getting Started](getting-started/introduction.md)__
 
-- :material-kubernetes: **[Install Operator](operator/installation.md)**
-  Deploy the Obsyk operator to your cluster.
+    ---
 
-- :material-book-open-variant: **[User Guide](user-guide/overview.md)**
-  Learn how to use the Obsyk platform.
+    New to Obsyk? Start here.
 
-- :material-api: **[API Reference](https://developers.obsyk.ai)**
-  Explore the REST API documentation.
+-   :material-kubernetes: __[Install Operator](operator/installation.md)__
+
+    ---
+
+    Deploy the Obsyk operator to your cluster.
+
+-   :material-book-open-variant: __[User Guide](user-guide/overview.md)__
+
+    ---
+
+    Learn how to use the Obsyk platform.
+
+-   :material-api: __[API Reference](https://developers.obsyk.ai)__
+
+    ---
+
+    Explore the REST API documentation.
 
 </div>
 
