@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: obsyk-runner
 
     permissions:
       contents: read
@@ -56,7 +56,7 @@ jobs:
           docker push ${{ env.IMAGE_NAME }}:latest
 
   update-platform:
-    runs-on: ubuntu-latest
+    runs-on: obsyk-runner
     needs: build-and-push
 
     steps:
