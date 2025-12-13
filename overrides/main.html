@@ -1,0 +1,100 @@
+<!-- Copyright (c) Obsyk. All rights reserved. -->
+<!-- Proprietary and confidential. -->
+{% extends "base.html" %}
+
+{% block extrahead %}
+<!-- Google Fonts for Obsyk brand -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Obsyk Shared UI Styles -->
+<link rel="stylesheet" href="https://obsyk.github.io/shared-ui/obsyk-shared.css">
+
+<style>
+  /* Adjust body to account for fixed Obsyk header */
+  body {
+    padding-top: var(--obsyk-header-height, 64px);
+  }
+
+  /* Hide MkDocs header when Obsyk header is present */
+  .md-header {
+    top: var(--obsyk-header-height, 64px);
+  }
+
+  /* Adjust sidebar position */
+  .md-sidebar {
+    top: calc(var(--obsyk-header-height, 64px) + 48px);
+  }
+
+  /* Hide the default MkDocs footer */
+  .md-footer {
+    display: none;
+  }
+
+  /* Ensure Obsyk footer is below content */
+  .obsyk-footer {
+    margin-top: auto;
+  }
+
+  /* Make main content flex container */
+  .md-container {
+    min-height: calc(100vh - var(--obsyk-header-height, 64px));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .md-main {
+    flex: 1;
+  }
+</style>
+{% endblock %}
+
+{% block header %}
+<!-- Obsyk Shared Header -->
+<div id="obsyk-header-container"></div>
+<!-- Keep MkDocs header for navigation tabs -->
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+{% endblock %}
+
+{% block footer %}
+<!-- Obsyk Shared Footer -->
+<div id="obsyk-footer-container"></div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<!-- Obsyk Shared UI JavaScript -->
+<script src="https://obsyk.github.io/shared-ui/obsyk-shared.js"></script>
+<script>
+  // Load and inject Obsyk header
+  fetch('https://obsyk.github.io/shared-ui/header.html')
+    .then(function(response) { return response.text(); })
+    .then(function(html) {
+      document.getElementById('obsyk-header-container').innerHTML = html;
+      if (window.ObsykSharedUI) {
+        window.ObsykSharedUI.initHeader();
+      }
+    })
+    .catch(function(err) {
+      console.error('Failed to load Obsyk header:', err);
+    });
+
+  // Load and inject Obsyk footer
+  fetch('https://obsyk.github.io/shared-ui/footer.html')
+    .then(function(response) { return response.text(); })
+    .then(function(html) {
+      document.getElementById('obsyk-footer-container').innerHTML = html;
+      if (window.ObsykSharedUI) {
+        window.ObsykSharedUI.initFooter();
+      }
+    })
+    .catch(function(err) {
+      console.error('Failed to load Obsyk footer:', err);
+    });
+</script>
+{% endblock %}
