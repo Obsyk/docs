@@ -4,10 +4,10 @@ Deploy the Obsyk operator to your Kubernetes cluster.
 
 ## Prerequisites
 
-- Kubernetes cluster v1.24+
+- Kubernetes cluster v1.26+
 - `kubectl` with cluster admin access
 - `helm` v3.x
-- Obsyk account with cluster credentials
+- Obsyk account with cluster credentials (Client ID and Private Key from the dashboard)
 
 ## Installation Methods
 
@@ -15,22 +15,23 @@ Deploy the Obsyk operator to your Kubernetes cluster.
 
 ```bash
 # Add the Obsyk Helm repository
-helm repo add obsyk https://charts.obsyk.ai
+helm repo add obsyk https://obsyk.github.io/obsyk-operator
 helm repo update
 
 # Create namespace
 kubectl create namespace obsyk-system
 
-# Create secret with credentials
+# Create secret with credentials (save your private key to private-key.pem first)
 kubectl create secret generic obsyk-credentials \
   --namespace obsyk-system \
-  --from-literal=client-id=YOUR_CLIENT_ID \
-  --from-literal=client-secret=YOUR_CLIENT_SECRET
+  --from-literal=client_id=YOUR_CLIENT_ID \
+  --from-file=private_key=private-key.pem
 
 # Install the operator
 helm install obsyk-operator obsyk/obsyk-operator \
   --namespace obsyk-system \
-  --set existingSecret=obsyk-credentials
+  --set agent.clusterName="my-cluster" \
+  --set agent.platformURL="https://app.obsyk.ai"
 ```
 
 ### Helm with Values File
@@ -38,9 +39,11 @@ helm install obsyk-operator obsyk/obsyk-operator \
 Create `values.yaml`:
 
 ```yaml
-platformUrl: https://api.obsyk.ai
-
-existingSecret: obsyk-credentials
+agent:
+  clusterName: "my-cluster"
+  platformURL: "https://app.obsyk.ai"
+  credentialsSecretRef:
+    name: obsyk-credentials
 
 resources:
   limits:
@@ -49,9 +52,6 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
-# Optional: limit watched namespaces
-namespaceSelector: {}
 ```
 
 Install:
