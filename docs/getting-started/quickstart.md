@@ -7,23 +7,28 @@ Get Obsyk running in under 5 minutes.
 In the Obsyk dashboard:
 
 ```
-Clusters → Add Cluster → Enter name → Copy credentials
+Integrations → Add Cluster → Enter name → Generate credentials → Download private key
 ```
 
 ## 2. Install the Operator
 
 ```bash
 # Add the Obsyk Helm repository
-helm repo add obsyk https://charts.obsyk.ai
+helm repo add obsyk https://obsyk.github.io/obsyk-operator
 helm repo update
+
+# Create namespace and credentials secret
+kubectl create namespace obsyk-system
+kubectl create secret generic obsyk-credentials \
+  --namespace obsyk-system \
+  --from-literal=client_id=YOUR_CLIENT_ID \
+  --from-file=private_key=your-cluster-private-key.pem
 
 # Install the operator
 helm install obsyk-operator obsyk/obsyk-operator \
   --namespace obsyk-system \
-  --create-namespace \
-  --set clientId=YOUR_CLIENT_ID \
-  --set clientSecret=YOUR_CLIENT_SECRET \
-  --set platformUrl=https://api.obsyk.ai
+  --set agent.clusterName="your-cluster-name" \
+  --set agent.platformURL="https://app.obsyk.ai"
 ```
 
 ## 3. Verify Installation
@@ -33,7 +38,7 @@ helm install obsyk-operator obsyk/obsyk-operator \
 kubectl get pods -n obsyk-system
 
 # Check operator logs
-kubectl logs -n obsyk-system -l app=obsyk-operator
+kubectl logs -n obsyk-system -l app.kubernetes.io/name=obsyk-operator
 ```
 
 ## 4. View Your Cluster
