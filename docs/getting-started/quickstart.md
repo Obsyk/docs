@@ -12,6 +12,8 @@ Integrations → Add Cluster → Enter name → Generate credentials → Downloa
 
 ## 2. Install the Operator
 
+The Helm chart is available on [Artifact Hub](https://artifacthub.io/packages/helm/obsyk-operator/obsyk-operator).
+
 ```bash
 # Add the Obsyk Helm repository
 helm repo add obsyk https://obsyk.github.io/obsyk-operator
