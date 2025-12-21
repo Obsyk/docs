@@ -94,6 +94,7 @@ nav:
   - Operator:
       - Overview: operator/overview.md
       - Installation: operator/installation.md
+      - GitOps: operator/gitops.md
       - Configuration: operator/configuration.md
       - Security: operator/security.md
   - Reference:
