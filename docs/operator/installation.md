@@ -1,6 +1,8 @@
 # Operator Installation
 
-Deploy the Obsyk operator to your Kubernetes cluster.
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/obsyk-operator)](https://artifacthub.io/packages/helm/obsyk-operator/obsyk-operator)
+
+Deploy the Obsyk operator to your Kubernetes cluster. The Helm chart is available on [Artifact Hub](https://artifacthub.io/packages/helm/obsyk-operator/obsyk-operator).
 
 ## Prerequisites
 
